@@ -1,0 +1,23 @@
+h2. ActiveScaffoldCKeditor
+
+Copyright (c) 2010 Atalargo
+
+MIT License use as you wish, see MIT-LICENSE file
+
+Version 0.2
+
+Provide CKeditor for text area content in ActiveScaffold Form
+
+h3. Installing:
+
+You must have ActiveScaffold and Rails-ckeditor plugin installed and configured
+
+
+* ./script/plugin install git://github.com/atalargo/active_scaffold_ckeditor.git
+
+ To use it, first add CKeditor javascript in your layout like indicated in Rails-ckeditor README.
+ After in a controller where you active ActiveScaffold, active CKeditor for a form_ui column
+
+ active_scaffold :page_contents do |config|
+	columns[:content].form_ui = :ckeditor
+ end
