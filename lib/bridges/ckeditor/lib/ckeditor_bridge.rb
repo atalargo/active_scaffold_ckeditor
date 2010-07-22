@@ -33,12 +33,14 @@ ActiveScaffold.ActionLink.Abstract.prototype.close = function() {
       end
 
       def active_scaffold_input_ckeditor(column, options)
-	ckeditor_textarea( :record, column.name, :width => "600px", :height => "200px", :language => I18n.locale.to_s, :class => 'CKEditor', :resize_enabled => true, :ajax => true)
-#         options[:class] = "#{options[:class]} mceEditor #{column.options[:class]}".strip
-#         html = []
-#         html << send(override_input(:textarea), column, options)
-#         html << javascript_tag("tinyMCE.execCommand('mceAddControl', false, '#{options[:id]}');") if request.xhr? || params[:iframe]
-#         html.join "\n"
+
+	options[:width] ||= (column.options[:width] ||= "600px")
+	options[:height] ||= (column.options[:height] ||= "200px")
+	options[:language] ||= (column.options[:language] ||= I18n.locale.to_s)
+	options[:class] = "#{options[:class]} CKEditor #{column.options[:class]}".strip
+	options[:resize_enabled] ||= (column.options[:resize_enabled] ||= true)
+	options[:ajax] ||= (column.options[:ajax] ||= true)
+	ckeditor_textarea( :record, column.name, :width => options[:width], :height => options[:height], :language => options[:language], :class => options[:class], :resize_enabled => options[:resize_enabled], :ajax => options[:ajax])
       end
 
       def onsubmit_with_ckeditor
