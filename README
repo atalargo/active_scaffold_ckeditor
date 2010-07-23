@@ -21,3 +21,20 @@ You must have ActiveScaffold and Rails-ckeditor plugin installed and configured
  active_scaffold :page_contents do |config|
 	columns[:content].form_ui = :ckeditor
  end
+
+ you can pass option for the CKEditor composent with column options
+
+ active_scaffold :page_contents do |config|
+	columns[:content].form_ui = :ckeditor
+        config.columns[:content].options = {:width => "100%"}
+ end
+
+ For the moment the options managed by this form are : 
+ * width          : string
+ * height 	  : string
+ * class          : string
+ * ajax           : boolean
+ * language       : string
+ * resize_enabled : boolean
+
+
