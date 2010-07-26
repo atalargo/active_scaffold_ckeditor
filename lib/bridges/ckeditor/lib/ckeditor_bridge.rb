@@ -17,8 +17,8 @@ module ActiveScaffold
 	ckeditor_js = javascript_tag(%|
 var action_link_close = ActiveScaffold.ActionLink.Abstract.prototype.close;
 ActiveScaffold.ActionLink.Abstract.prototype.close = function() {
-  this.adapter.select('textarea').each(function(elem) {
-   if (/_editor$/.test(elem.id)) {if (CKEDITOR.instances[elem.id]) {CKEDITOR.instances[elem.id].destroy(false);}}
+  this.adapter.select('textarea.CKEditor').each(function(elem) {
+   if (CKEDITOR.instances[elem.id]) {CKEDITOR.instances[elem.id].destroy(false);}
   });
   action_link_close.apply(this);
 };
@@ -44,7 +44,7 @@ ActiveScaffold.ActionLink.Abstract.prototype.close = function() {
       end
 
       def onsubmit_with_ckeditor
-        submit_js = 'this.select("textarea").each(function(elem) {if (/_editor$/.test(elem.id)) {var oEditor = CKEDITOR.instances[elem.id]; document.getElementById(elem.id+"_hidden").value = oEditor.getData();CKEDITOR.instances[elem.id].destroy(false);}});' #if using_ckeditor?
+        submit_js = 'this.select("textarea.CKEditor").each(function(elem) {var oEditor = CKEDITOR.instances[elem.id]; document.getElementById(elem.id+"_hidden").value = oEditor.getData();CKEDITOR.instances[elem.id].destroy(false);});' #if using_ckeditor?
         [onsubmit_without_ckeditor, submit_js].compact.join ';'
       end
     end
