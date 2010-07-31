@@ -12,6 +12,8 @@ h3. Installing:
 
 You must have ActiveScaffold and Rails-ckeditor plugin installed and configured
 
+(you must use this fork of rails-ckeditor : http://github.com/atalargo/rails-ckeditor to have the possibility to have many editor opened of different instance of same model at the same time -like in subform editors of association)
+
 
 * ./script/plugin install git://github.com/atalargo/active_scaffold_ckeditor.git
 

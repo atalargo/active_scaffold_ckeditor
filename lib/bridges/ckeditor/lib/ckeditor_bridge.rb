@@ -33,14 +33,13 @@ ActiveScaffold.ActionLink.Abstract.prototype.close = function() {
       end
 
       def active_scaffold_input_ckeditor(column, options)
-
 	options[:width] ||= (column.options[:width] ||= "600px")
 	options[:height] ||= (column.options[:height] ||= "200px")
 	options[:language] ||= (column.options[:language] ||= I18n.locale.to_s)
 	options[:class] = "#{options[:class]} CKEditor #{column.options[:class]}".strip
 	options[:resize_enabled] ||= (column.options[:resize_enabled] ||= true)
 	options[:ajax] ||= (column.options[:ajax] ||= true)
-	ckeditor_textarea( :record, column.name, :width => options[:width], :height => options[:height], :language => options[:language], :class => options[:class], :resize_enabled => options[:resize_enabled], :ajax => options[:ajax])
+	ckeditor_textarea( :record, column.name, :id => options[:id], :name => options[:name], :width => options[:width], :height => options[:height], :language => options[:language], :class => options[:class], :resize_enabled => options[:resize_enabled], :ajax => options[:ajax])
       end
 
       def onsubmit_with_ckeditor
