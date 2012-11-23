@@ -1,3 +1,5 @@
+#coding: urf-8
+
 module ActiveScaffold
   module CKEditorBridge
     def self.included(base)
