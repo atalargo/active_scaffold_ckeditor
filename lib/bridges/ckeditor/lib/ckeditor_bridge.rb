@@ -1,4 +1,4 @@
-#coding: urf-8
+#coding: utf-8
 
 module ActiveScaffold
   module CKEditorBridge
